@@ -10,4 +10,9 @@ app.get('/', (req, res) => {
   res.render('index')
 })
 
+app.post('/shortUrl', (req, res) => {
+  console.log(req.body.fullUrl)
+  res.redirect('/')
+})
+
 app.listen(3000, () => console.log('server started'))
