@@ -11,7 +11,7 @@ const shortUrlSchema = new mongoose.Schema({
   short: {
     type: String,
     required: true,
-    default: suid.rnd()
+    default: () => generateShortId()
   },
   clicks: {
     type: Number,
@@ -19,5 +19,7 @@ const shortUrlSchema = new mongoose.Schema({
     default: 0
   }
 })
+
+function generateShortId() {return suid.rnd()}
 
 module.exports = mongoose.model('ShortUrl', shortUrlSchema)
