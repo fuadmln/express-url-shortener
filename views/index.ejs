@@ -26,6 +26,7 @@
                 <th>Full Url</th>
                 <th>Short Url</th>
                 <th>Clicks</th>
+                <th>Actions</th>
             </thead>
             <tbody>
                 <% locals.shortUrls.forEach(url=> {%>
@@ -42,6 +43,11 @@
                         </td>
                         <td>
                             <%= url.clicks %>
+                        </td>
+                        <td>
+                            <a href="/<%= url.short%>/delete">
+                                Delete
+                            </a>
                         </td>
                     </tr>
                     <% }); %>

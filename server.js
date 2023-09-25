@@ -24,4 +24,12 @@ app.post('/shortUrl', async (req, res) => {
   res.redirect('/')
 })
 
+app.get('/:shortUrl/delete', async (req, res) => {
+  const deleted = await ShortUrl.findOneAndDelete({ short: req.params.shortUrl })
+  if(!deleted) console.log('delete failed')
+  else console.log(`${deleted.full} successfully deleted`)
+
+  res.redirect('/')
+})
+
 app.listen(3000, () => console.log('server started'))
