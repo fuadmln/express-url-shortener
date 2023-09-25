@@ -19,6 +19,17 @@ app.get('/', async (req, res) => {
   res.render('index', {shortUrls})
 })
 
+app.get('/:shortUrl', async (req, res) => {
+  const shortUrl = await ShortUrl.findOne({short: req.params.shortUrl})
+  
+  if (shortUrl == null) { res.status(404).send('URL not found'); return; }
+
+  shortUrl.clicks++
+  shortUrl.save()
+
+  res.redirect(`https://${shortUrl.full}`)
+})
+
 app.post('/shortUrl', async (req, res) => {
   await ShortUrl.create({ full: req.body.fullUrl})
   res.redirect('/')
