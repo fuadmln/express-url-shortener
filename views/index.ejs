@@ -18,7 +18,7 @@
                 <label class="visually-hidden" for="fullUrl">Url</label>
                 <div class="input-group-text">https://</div>
                 <input type="text" class="form-control" id="fullUrl" name="fullUrl" required
-                    placeholder="your-url.domain">
+                    placeholder="your-very-long-url.domain">
                 <button class="btn btn-primary" type="submit" id="submit">Shrink</button>
             </div>
         </form>
@@ -33,20 +33,20 @@
                 <% locals.shortUrls.forEach(url=> {%>
                     <tr>
                         <td>
-                            <a href="<%= url.full %>">
-                                <%= url.full %>
+                            <a href="https://<%= url.full %>">
+                                https://<%= url.full %>
                             </a>
                         </td>
                         <td>
                             <a href="/<%= url.short%>" target="_blank">
-                                <%= url.short %>
+                                https://localhost/<%= url.short %>
                             </a>
                         </td>
                         <td>
                             <%= url.clicks %>
                         </td>
                         <td>
-                            <a href="/<%= url.short%>/delete">
+                            <a href="/<%= url.short%>/delete" class="link-danger">
                                 Delete
                             </a>
                         </td>
