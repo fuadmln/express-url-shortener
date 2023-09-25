@@ -14,12 +14,12 @@ mongoose.connection.once('open', function () {
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: false}) )
 
-app.get('/', (req, res) => {
-  res.render('index')
+app.get('/', async (req, res) => {
+  const shortUrls = await ShortUrl.find()
+  res.render('index', {shortUrls})
 })
 
 app.post('/shortUrl', async (req, res) => {
-  console.log(req.body.fullUrl)
   await ShortUrl.create({ full: req.body.fullUrl})
   res.redirect('/')
 })
