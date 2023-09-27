@@ -27,10 +27,28 @@ A web application for shorten your long URL to short link
    mongoose.connect("put your database connection string here");
    ```
 
-4. Run server locally
+4. Install package
+
+   ```sh
+   npm install
+   ```
+
+5. Run server locally
 
    ```sh
    npm run dev
    ```
 
-5. Open [localhost:3000](localhost:3000) in browser
+6. Open [localhost:3000](localhost:3000) in browser
+
+## Constraint
+
+- The length of the shortened url parameter is set to static (which is 8). If all possible URLs with a length of 8 characters have been generated, it will not produce a unique URL anymore. You can change it in `/model/shortUrl.js` file
+
+  ```js
+  const suid = new ShortUniqueId({ length: 8 });
+  ```
+
+- URL input is **not properly validated**. The user can enter not valid URL
+
+- No **edit URL** utility
